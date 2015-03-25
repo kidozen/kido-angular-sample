@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="KidoAngularSample">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KidoZen</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="https://cdn.kidozen.com/kido-js-sdk/kido-js.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="HomeCtrl">
+
+    <h2>Kido Angular Demo</h2>
+
+    <form ng-submit="onAddPersonClick()">
+        <input type="text" placeholder="First Name" ng-model="firstName">
+        <input type="text" placeholder="Last Name" ng-model="lastName">
+        <input type="submit" value="Add">
+    </form>
+
+    <p ng-if="isLoading">Loading...</p>
+
+    <p ng-if="items.length === 0 && !isLoading"><i>There are no items yet</i></p>
+    
+    <ul>
+        <li ng-repeat="item in items">
+            <button ng-click="onRemovePersonClick(item._id)">x</button>
+            {{ item.lastName + ', ' + item.firstName }}
+        </li>
+    </ul>
+
+</body>
+
+</html>
